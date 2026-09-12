@@ -1,0 +1,11 @@
+{
+    "Accuracy": 0.6269,
+    "Precision": 0.5881,
+    "Recall": 0.7401,
+    "F1_Score": 0.6555,
+    "ROC_AUC": 0.6794,
+    "PR_AUC": 0.6347,
+    "Log_Loss": 0.6927,
+    "Brier_Score": 0.2441,
+    "Calibration_Applied": true
+}

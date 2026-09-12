@@ -1,0 +1,30 @@
+{
+    "Status": "Success",
+    "Execution_Time_Seconds": 9.15,
+    "Validations": [
+        {
+            "Name": "Player_Stats",
+            "Rows": 791,
+            "Missing_Values": 0,
+            "Duplicates": 0,
+            "Negative_Values": 0,
+            "Inf_Values": 0
+        },
+        {
+            "Name": "Venue_Stats",
+            "Rows": 59,
+            "Missing_Values": 0,
+            "Duplicates": 0,
+            "Negative_Values": 0,
+            "Inf_Values": 0
+        },
+        {
+            "Name": "Team_Stats",
+            "Rows": 19,
+            "Missing_Values": 0,
+            "Duplicates": 0,
+            "Negative_Values": 0,
+            "Inf_Values": 0
+        }
+    ]
+}

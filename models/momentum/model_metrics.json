@@ -1,0 +1,13 @@
+{
+    "Accuracy": 0.5188,
+    "Precision": 0.5324,
+    "Recall": 0.577,
+    "F1_Score": 0.5197,
+    "Weighted_F1": 0.4979,
+    "ROC_AUC": 0.7476,
+    "Per_Class_Recall": {
+        "0": 0.8237,
+        "1": 0.3138,
+        "2": 0.5935
+    }
+}

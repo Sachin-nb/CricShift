@@ -1,0 +1,8 @@
+Scenario,Original_Win_Prob,New_Win_Prob,Win_Prob_Delta,Original_Momentum,New_Momentum,Momentum_Delta
+Replace batter with a power-hitter,18.25,46.69,28.44,Neutral,Neutral,0
+Replace bowler with an economical spinner,18.25,16.69,-1.56,Neutral,Negative,-1
+Increase current runs by 20,18.25,20.22,1.97,Neutral,Neutral,0
+Reduce wickets to simulate fewer early collapses,18.25,18.07,-0.18,Neutral,Neutral,0
+Move match to death overs with high required rate,18.25,65.29,47.04,Neutral,Neutral,0
+Change venue to a high-scoring ground,18.25,66.25,48.0,Neutral,Neutral,0
+Swap batting and bowling teams (toss winner change),18.25,32.55,14.3,Neutral,Neutral,0

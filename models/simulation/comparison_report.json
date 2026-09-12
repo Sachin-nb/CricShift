@@ -1,0 +1,76 @@
+{
+  "phase": "3C",
+  "module": "Simulation Comparison",
+  "total_scenarios": 7,
+  "comparison_table": [
+    {
+      "Scenario": "Replace batter with a power-hitter",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 46.69,
+      "Win_Prob_Delta": 28.44,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Neutral",
+      "Momentum_Delta": 0
+    },
+    {
+      "Scenario": "Replace bowler with an economical spinner",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 16.69,
+      "Win_Prob_Delta": -1.56,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Negative",
+      "Momentum_Delta": -1
+    },
+    {
+      "Scenario": "Increase current runs by 20",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 20.22,
+      "Win_Prob_Delta": 1.97,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Neutral",
+      "Momentum_Delta": 0
+    },
+    {
+      "Scenario": "Reduce wickets to simulate fewer early collapses",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 18.07,
+      "Win_Prob_Delta": -0.18,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Neutral",
+      "Momentum_Delta": 0
+    },
+    {
+      "Scenario": "Move match to death overs with high required rate",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 65.29,
+      "Win_Prob_Delta": 47.04,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Neutral",
+      "Momentum_Delta": 0
+    },
+    {
+      "Scenario": "Change venue to a high-scoring ground",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 66.25,
+      "Win_Prob_Delta": 48.0,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Neutral",
+      "Momentum_Delta": 0
+    },
+    {
+      "Scenario": "Swap batting and bowling teams (toss winner change)",
+      "Original_Win_Prob": 18.25,
+      "New_Win_Prob": 32.55,
+      "Win_Prob_Delta": 14.3,
+      "Original_Momentum": "Neutral",
+      "New_Momentum": "Neutral",
+      "Momentum_Delta": 0
+    }
+  ],
+  "summary": {
+    "max_win_prob_increase": 48.0,
+    "max_win_prob_decrease": -1.56,
+    "scenarios_with_momentum_shift": 1
+  },
+  "status": "SUCCESS"
+}

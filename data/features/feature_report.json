@@ -1,0 +1,11 @@
+{
+    "Total_Rows": 283678,
+    "Total_Columns": 62,
+    "Missing_Values": 0,
+    "Duplicate_Rows": 0,
+    "Infinite_Values": 0,
+    "Invalid_Labels": 0,
+    "Incorrect_DataTypes": 0,
+    "Status": "Passed",
+    "Execution_Time_Seconds": 5.44
+}

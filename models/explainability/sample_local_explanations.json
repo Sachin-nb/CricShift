@@ -1,0 +1,952 @@
+[
+  {
+    "sample_index": 1501,
+    "match_context": {
+      "batting_team": "Deccan Chargers",
+      "bowling_team": "Delhi Daredevils",
+      "venue": "Rajiv Gandhi International Stadium, Uppal",
+      "over": 13.0,
+      "score": 66.0,
+      "wickets": 5.0
+    },
+    "momentum_prediction": {
+      "class": 1,
+      "label": "Neutral",
+      "confidence": 0.4905,
+      "class_probabilities": {
+        "Negative": 0.0368,
+        "Neutral": 0.4905,
+        "Positive": 0.4727
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowler_Name",
+          "value": 541.0,
+          "contribution": 6.722216
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 571.68,
+          "contribution": 5.037658
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 570.0,
+          "contribution": 3.704452
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 5.0,
+          "contribution": 3.153012
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 115.74,
+          "contribution": 1.799249
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 84.48,
+          "contribution": 1.036969
+        },
+        {
+          "feature": "Current_Over",
+          "value": 13.0,
+          "contribution": 0.753031
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 35.3982,
+          "contribution": 0.704144
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 44.9,
+          "contribution": 0.481753
+        },
+        {
+          "feature": "Venue",
+          "value": 43.0,
+          "contribution": 0.464734
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowler_Name",
+          "value": 541.0,
+          "contribution": 6.722216
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 571.68,
+          "contribution": 5.037658
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 570.0,
+          "contribution": 3.704452
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 5.0,
+          "contribution": 3.153012
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 115.74,
+          "contribution": 1.799249
+        }
+      ],
+      "negative_contributors": []
+    },
+    "win_prediction": {
+      "win_probability_pct": 13.41,
+      "predicted_class": 0,
+      "confidence": 0.8659,
+      "class_probabilities": {
+        "Loss": 0.8659,
+        "Win": 0.1341
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 571.68,
+          "contribution": 15.88
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 115.74,
+          "contribution": 3.215
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 84.48,
+          "contribution": 2.346667
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 44.9,
+          "contribution": 1.247222
+        },
+        {
+          "feature": "Venue",
+          "value": 43.0,
+          "contribution": 1.194444
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 38.67,
+          "contribution": 1.074167
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 35.3982,
+          "contribution": 0.983284
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 24.0,
+          "contribution": 0.666667
+        },
+        {
+          "feature": "Runs_Last_18_Balls",
+          "value": 17.0,
+          "contribution": 0.472222
+        },
+        {
+          "feature": "Bowler_Strike_Rate",
+          "value": 16.14,
+          "contribution": 0.448333
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 571.68,
+          "contribution": 15.88
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 115.74,
+          "contribution": 3.215
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 84.48,
+          "contribution": 2.346667
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 44.9,
+          "contribution": 1.247222
+        },
+        {
+          "feature": "Venue",
+          "value": 43.0,
+          "contribution": 1.194444
+        }
+      ],
+      "negative_contributors": []
+    }
+  },
+  {
+    "sample_index": 2586,
+    "match_context": {
+      "batting_team": "Rajasthan Royals",
+      "bowling_team": "Royal Challengers Bangalore",
+      "venue": "M Chinnaswamy Stadium",
+      "over": 13.0,
+      "score": 117.0,
+      "wickets": 2.0
+    },
+    "momentum_prediction": {
+      "class": 0,
+      "label": "Negative",
+      "confidence": 0.938,
+      "class_probabilities": {
+        "Negative": 0.938,
+        "Neutral": 0.042,
+        "Positive": 0.0199
+      },
+      "top_10_features": [
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 5888.97,
+          "contribution": 91.547616
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 34.126502
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 26.0,
+          "contribution": 16.395664
+        },
+        {
+          "feature": "Bowler_Name",
+          "value": 356.0,
+          "contribution": 4.423492
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 604.0,
+          "contribution": 3.92542
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 137.93,
+          "contribution": 1.693053
+        },
+        {
+          "feature": "Current_Partnership_Runs",
+          "value": 91.0,
+          "contribution": 1.112841
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 48.0,
+          "contribution": 0.872798
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 42.5911,
+          "contribution": 0.847226
+        },
+        {
+          "feature": "Current_Over",
+          "value": 13.0,
+          "contribution": 0.753031
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 5888.97,
+          "contribution": 91.547616
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 34.126502
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 26.0,
+          "contribution": 16.395664
+        },
+        {
+          "feature": "Bowler_Name",
+          "value": 356.0,
+          "contribution": 4.423492
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 604.0,
+          "contribution": 3.92542
+        }
+      ],
+      "negative_contributors": []
+    },
+    "win_prediction": {
+      "win_probability_pct": 85.78,
+      "predicted_class": 1,
+      "confidence": 0.8578,
+      "class_probabilities": {
+        "Loss": 0.1422,
+        "Win": 0.8578
+      },
+      "top_10_features": [
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 5888.97,
+          "contribution": 163.5825
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 107.575556
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 137.93,
+          "contribution": 3.831389
+        },
+        {
+          "feature": "Current_Partnership_Runs",
+          "value": 91.0,
+          "contribution": 2.527778
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 68.25,
+          "contribution": 1.895833
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 49.17,
+          "contribution": 1.365833
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 48.0,
+          "contribution": 1.333333
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 42.5911,
+          "contribution": 1.183087
+        },
+        {
+          "feature": "Runs_Last_18_Balls",
+          "value": 38.0,
+          "contribution": 1.055556
+        },
+        {
+          "feature": "Runs_Last_12_Balls",
+          "value": 34.0,
+          "contribution": 0.944444
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 5888.97,
+          "contribution": 163.5825
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 107.575556
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 137.93,
+          "contribution": 3.831389
+        },
+        {
+          "feature": "Current_Partnership_Runs",
+          "value": 91.0,
+          "contribution": 2.527778
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 68.25,
+          "contribution": 1.895833
+        }
+      ],
+      "negative_contributors": []
+    }
+  },
+  {
+    "sample_index": 2653,
+    "match_context": {
+      "batting_team": "Kolkata Knight Riders",
+      "bowling_team": "Chennai Super Kings",
+      "venue": "MA Chidambaram Stadium, Chepauk",
+      "over": 7.0,
+      "score": 64.0,
+      "wickets": 4.0
+    },
+    "momentum_prediction": {
+      "class": 2,
+      "label": "Positive",
+      "confidence": 0.5453,
+      "class_probabilities": {
+        "Negative": 0.043,
+        "Neutral": 0.4117,
+        "Positive": 0.5453
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowler_Name",
+          "value": 353.0,
+          "contribution": 4.386215
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 411.0,
+          "contribution": 2.671105
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 134.55,
+          "contribution": 2.091661
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 3.0,
+          "contribution": 1.891807
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 77.11,
+          "contribution": 0.946504
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 90.73,
+          "contribution": 0.799515
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 62.5,
+          "contribution": 0.670591
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 32.0,
+          "contribution": 0.581865
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 21.9697,
+          "contribution": 0.437023
+        },
+        {
+          "feature": "Current_Over",
+          "value": 7.0,
+          "contribution": 0.405478
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowler_Name",
+          "value": 353.0,
+          "contribution": 4.386215
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 411.0,
+          "contribution": 2.671105
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 134.55,
+          "contribution": 2.091661
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 3.0,
+          "contribution": 1.891807
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 77.11,
+          "contribution": 0.946504
+        }
+      ],
+      "negative_contributors": []
+    },
+    "win_prediction": {
+      "win_probability_pct": 13.66,
+      "predicted_class": 0,
+      "confidence": 0.8634,
+      "class_probabilities": {
+        "Loss": 0.8634,
+        "Win": 0.1366
+      },
+      "top_10_features": [
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 134.55,
+          "contribution": 3.7375
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 90.73,
+          "contribution": 2.520278
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 77.11,
+          "contribution": 2.141944
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 62.5,
+          "contribution": 1.736111
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 50.19,
+          "contribution": 1.394167
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 32.0,
+          "contribution": 0.888889
+        },
+        {
+          "feature": "Venue",
+          "value": 27.0,
+          "contribution": 0.75
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 21.9697,
+          "contribution": 0.610269
+        },
+        {
+          "feature": "Bowler_Strike_Rate",
+          "value": 18.86,
+          "contribution": 0.523889
+        },
+        {
+          "feature": "Runs_Last_18_Balls",
+          "value": 18.0,
+          "contribution": 0.5
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 134.55,
+          "contribution": 3.7375
+        },
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 90.73,
+          "contribution": 2.520278
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 77.11,
+          "contribution": 2.141944
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 62.5,
+          "contribution": 1.736111
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 50.19,
+          "contribution": 1.394167
+        }
+      ],
+      "negative_contributors": []
+    }
+  },
+  {
+    "sample_index": 1055,
+    "match_context": {
+      "batting_team": "Deccan Chargers",
+      "bowling_team": "Kolkata Knight Riders",
+      "venue": "Eden Gardens",
+      "over": 18.0,
+      "score": 110.0,
+      "wickets": 10.0
+    },
+    "momentum_prediction": {
+      "class": 1,
+      "label": "Neutral",
+      "confidence": 0.6136,
+      "class_probabilities": {
+        "Negative": 0.2685,
+        "Neutral": 0.6136,
+        "Positive": 0.1179
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 1311.52,
+          "contribution": 11.557146
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 6.0,
+          "contribution": 3.783615
+        },
+        {
+          "feature": "Bowler_Name",
+          "value": 278.0,
+          "contribution": 3.4543
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 526.0,
+          "contribution": 3.418494
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 112.21,
+          "contribution": 1.744373
+        },
+        {
+          "feature": "Current_Over",
+          "value": 18.0,
+          "contribution": 1.042658
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 68.42,
+          "contribution": 0.839837
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 45.0,
+          "contribution": 0.818248
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 33.2463,
+          "contribution": 0.661338
+        },
+        {
+          "feature": "Bowler_Strike_Rate",
+          "value": 37.06,
+          "contribution": 0.476984
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 1311.52,
+          "contribution": 11.557146
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 6.0,
+          "contribution": 3.783615
+        },
+        {
+          "feature": "Bowler_Name",
+          "value": 278.0,
+          "contribution": 3.4543
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 526.0,
+          "contribution": 3.418494
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 112.21,
+          "contribution": 1.744373
+        }
+      ],
+      "negative_contributors": []
+    },
+    "win_prediction": {
+      "win_probability_pct": 13.37,
+      "predicted_class": 0,
+      "confidence": 0.8663,
+      "class_probabilities": {
+        "Loss": 0.8663,
+        "Win": 0.1337
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 1311.52,
+          "contribution": 36.431111
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 112.21,
+          "contribution": 3.116944
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 68.42,
+          "contribution": 1.900556
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 45.0,
+          "contribution": 1.25
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 38.67,
+          "contribution": 1.074167
+        },
+        {
+          "feature": "Bowler_Strike_Rate",
+          "value": 37.06,
+          "contribution": 1.029444
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 33.2463,
+          "contribution": 0.923508
+        },
+        {
+          "feature": "Runs_Last_18_Balls",
+          "value": 29.0,
+          "contribution": 0.805556
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 26.92,
+          "contribution": 0.747778
+        },
+        {
+          "feature": "Current_Over",
+          "value": 18.0,
+          "contribution": 0.5
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 1311.52,
+          "contribution": 36.431111
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 112.21,
+          "contribution": 3.116944
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 68.42,
+          "contribution": 1.900556
+        },
+        {
+          "feature": "Runs_Last_30_Balls",
+          "value": 45.0,
+          "contribution": 1.25
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 38.67,
+          "contribution": 1.074167
+        }
+      ],
+      "negative_contributors": []
+    }
+  },
+  {
+    "sample_index": 705,
+    "match_context": {
+      "batting_team": "Mumbai Indians",
+      "bowling_team": "Royal Challengers Bangalore",
+      "venue": "Wankhede Stadium",
+      "over": 2.0,
+      "score": 17.0,
+      "wickets": 1.0
+    },
+    "momentum_prediction": {
+      "class": 0,
+      "label": "Negative",
+      "confidence": 0.4599,
+      "class_probabilities": {
+        "Negative": 0.4599,
+        "Neutral": 0.3751,
+        "Positive": 0.165
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 34.126502
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 1224.18,
+          "contribution": 19.030622
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 8.0,
+          "contribution": 5.04482
+        },
+        {
+          "feature": "Bowler_Name",
+          "value": 356.0,
+          "contribution": 4.423492
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 610.0,
+          "contribution": 3.964414
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 144.36,
+          "contribution": 1.771979
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 42.5911,
+          "contribution": 0.847226
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 74.22,
+          "contribution": 0.79634
+        },
+        {
+          "feature": "Venue",
+          "value": 56.0,
+          "contribution": 0.605235
+        },
+        {
+          "feature": "Bowler_Strike_Rate",
+          "value": 28.04,
+          "contribution": 0.360892
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 34.126502
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 1224.18,
+          "contribution": 19.030622
+        },
+        {
+          "feature": "Runs_Last_6_Balls",
+          "value": 8.0,
+          "contribution": 5.04482
+        },
+        {
+          "feature": "Bowler_Name",
+          "value": 356.0,
+          "contribution": 4.423492
+        },
+        {
+          "feature": "Batter_Name",
+          "value": 610.0,
+          "contribution": 3.964414
+        }
+      ],
+      "negative_contributors": []
+    },
+    "win_prediction": {
+      "win_probability_pct": 17.53,
+      "predicted_class": 0,
+      "confidence": 0.8247,
+      "class_probabilities": {
+        "Loss": 0.8247,
+        "Win": 0.1753
+      },
+      "top_10_features": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 107.575556
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 1224.18,
+          "contribution": 34.005
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 144.36,
+          "contribution": 4.01
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 74.22,
+          "contribution": 2.061667
+        },
+        {
+          "feature": "Venue",
+          "value": 56.0,
+          "contribution": 1.555556
+        },
+        {
+          "feature": "Team_Win_Percentage",
+          "value": 53.9,
+          "contribution": 1.497222
+        },
+        {
+          "feature": "Bowler_Dot_Ball_Percentage",
+          "value": 42.5911,
+          "contribution": 1.183087
+        },
+        {
+          "feature": "Bowler_Strike_Rate",
+          "value": 28.04,
+          "contribution": 0.778889
+        },
+        {
+          "feature": "Batter_Career_Average",
+          "value": 27.43,
+          "contribution": 0.761944
+        },
+        {
+          "feature": "Runs_Last_18_Balls",
+          "value": 17.0,
+          "contribution": 0.472222
+        }
+      ],
+      "positive_contributors": [
+        {
+          "feature": "Bowling_Impact_Score",
+          "value": 3872.72,
+          "contribution": 107.575556
+        },
+        {
+          "feature": "Batting_Impact_Score",
+          "value": 1224.18,
+          "contribution": 34.005
+        },
+        {
+          "feature": "Batter_Career_Strike_Rate",
+          "value": 144.36,
+          "contribution": 4.01
+        },
+        {
+          "feature": "Batter_Boundary_Percentage",
+          "value": 74.22,
+          "contribution": 2.061667
+        },
+        {
+          "feature": "Venue",
+          "value": 56.0,
+          "contribution": 1.555556
+        }
+      ],
+      "negative_contributors": []
+    }
+  }
+]

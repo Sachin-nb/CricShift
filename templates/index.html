@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time cricket momentum shift detector with ball-by-ball analytics, win probability tracking, and dynamic momentum visualization">
+    <title>Momentum Shift Detector | Cricket Analytics Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+    <div class="loading-logo">🏏 Momentum Shift Detector</div>
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Preparing analytics engine...</div>
+</div>
+
+<!-- App Container -->
+<div id="app">
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <div class="brand-icon">🏏</div>
+            <div class="brand-text"><span>Momentum</span> Shift Detector</div>
+        </div>
+        <div class="nav-actions" id="nav-actions">
+            <div class="innings-tabs" id="innings-tabs" style="display:none;">
+                <button class="innings-tab active" data-innings="1" id="tab-innings1">1st Innings</button>
+                <button class="innings-tab" data-innings="2" id="tab-innings2">2nd Innings</button>
+            </div>
+            <button class="btn btn-secondary" id="btn-new-match" style="display:none;" onclick="showUpload()">
+                📁 New Match
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══ UPLOAD SECTION ═══ -->
+    <section id="upload-section">
+        <div class="upload-hero">
+            <h1>
+                <span class="gradient-text">Momentum Shift</span><br>
+                Detector
+            </h1>
+            <p>Upload a ball-by-ball cricket match dataset or use our sample match to explore real-time analytics, momentum tracking, and win probability visualization.</p>
+        </div>
+
+        <div class="upload-cards">
+            <div class="upload-card" id="card-sample" onclick="loadSampleMatch()">
+                <div class="card-icon">⚡</div>
+                <h3>Sample Match</h3>
+                <p>Load a pre-built T20 match between Mumbai Titans &amp; Delhi Strikers</p>
+            </div>
+            <div class="upload-card" id="card-upload" onclick="document.getElementById('file-upload-input').click()">
+                <div class="card-icon">📤</div>
+                <h3>Upload CSV</h3>
+                <p>Upload your own ball-by-ball match dataset in CSV format</p>
+            </div>
+        </div>
+        <input type="file" id="file-upload-input" accept=".csv" onchange="uploadFile(this)">
+    </section>
+
+    <!-- ═══ DASHBOARD SECTION ═══ -->
+    <section id="dashboard-section">
+
+        <!-- Match Header -->
+        <div class="match-header" id="match-header">
+            <div class="match-teams">
+                <div class="team-block" id="team-a-block">
+                    <div class="team-name" id="team-a-name">Team A</div>
+                    <div class="team-score">
+                        <span class="score-runs" id="team-a-runs">0</span><span class="score-wickets" id="team-a-wickets">/0</span>
+                    </div>
+                    <div class="team-overs" id="team-a-overs">(0.0 ov)</div>
+                </div>
+                <div class="match-vs">VS</div>
+                <div class="team-block" id="team-b-block">
+                    <div class="team-name" id="team-b-name">Team B</div>
+                    <div class="team-score">
+                        <span class="score-runs" id="team-b-runs">0</span><span class="score-wickets" id="team-b-wickets">/0</span>
+                    </div>
+                    <div class="team-overs" id="team-b-overs">(0.0 ov)</div>
+                </div>
+            </div>
+            <div class="match-rates">
+                <div class="rate-chip">
+                    <span class="rate-label">CRR</span>
+                    <span class="rate-value" id="current-crr">0.00</span>
+                </div>
+                <div class="rate-chip">
+                    <span class="rate-label">RRR</span>
+                    <span class="rate-value" id="current-rrr">0.00</span>
+                </div>
+                <div class="rate-chip">
+                    <span class="rate-label">Target</span>
+                    <span class="rate-value" id="target-score">—</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Playback Bar -->
+        <div class="playback-bar">
+            <div class="playback-controls">
+                <button class="btn btn-icon btn-secondary" id="btn-prev" onclick="prevBall()" title="Previous Ball">⏮</button>
+                <button class="btn btn-icon btn-primary" id="btn-play" onclick="togglePlay()" title="Play/Pause">▶</button>
+                <button class="btn btn-icon btn-secondary" id="btn-next" onclick="nextBall()" title="Next Ball">⏭</button>
+                <button class="btn btn-icon btn-secondary" id="btn-reset" onclick="resetPlayback()" title="Reset">⏹</button>
+            </div>
+            <div class="playback-progress">
+                <div class="progress-bar-container" id="progress-bar" onclick="seekBall(event)">
+                    <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Ball 0 / 0</span>
+            </div>
+            <div class="speed-control">
+                <span class="speed-label">Speed</span>
+                <input type="range" class="speed-slider" id="speed-slider" min="200" max="3000" step="100" value="1000" oninput="updateSpeed(this.value)">
+                <span class="speed-value" id="speed-value">1.0x</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+
+            <!-- Momentum Graph -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><span class="icon">📈</span> Momentum Index</span>
+                    <span class="card-badge badge-live" id="live-badge">LIVE</span>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" id="momentum-chart"></div>
+                    <div class="momentum-bar">
+                        <span class="momentum-bar-label">Bowling</span>
+                        <div class="momentum-bar-track">
+                            <div class="momentum-bar-indicator" id="momentum-indicator" style="left: 50%"></div>
+                        </div>
+                        <span class="momentum-bar-label">Batting</span>
+                        <span class="momentum-bar-value" id="momentum-value">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Win Probability Graph -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><span class="icon">🏆</span> Win Probability</span>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container win-prob-chart" id="winprob-chart"></div>
+                </div>
+            </div>
+
+            <!-- Ball-by-Ball Feed -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><span class="icon">🔴</span> Ball-by-Ball Feed</span>
+                </div>
+                <div class="card-body">
+                    <div class="ball-feed" id="ball-feed">
+                        <div class="empty-state">
+                            <div class="empty-icon">🏏</div>
+                            <p>Press Play to start the match simulation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Turning Points Timeline -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><span class="icon">⚡</span> Turning Points</span>
+                </div>
+                <div class="card-body">
+                    <div class="turning-points" id="turning-points">
+                        <div class="empty-state">
+                            <div class="empty-icon">🔍</div>
+                            <p>Momentum shifts will appear here as the match progresses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card animate-in">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-value" id="stat-runs5">0</div>
+                    <div class="stat-label">Last 5 Ov Runs</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-icon">⭕</div>
+                    <div class="stat-value" id="stat-dotpct">0%</div>
+                    <div class="stat-label">Dot Ball %</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value" id="stat-pressure">0</div>
+                    <div class="stat-label">Pressure Index</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="stat-momentum">0</div>
+                    <div class="stat-label">Momentum Score</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-icon">💥</div>
+                    <div class="stat-value" id="stat-boundary">0%</div>
+                    <div class="stat-label">Boundary Freq</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-value" id="stat-accel">0.0</div>
+                    <div class="stat-label">RR Acceleration</div>
+                </div>
+            </div>
+
+        </div><!-- /dashboard-grid -->
+
+    </section><!-- /dashboard-section -->
+
+</div><!-- /app -->
+
+<!-- Shift Alert Toast -->
+<div class="shift-alert" id="shift-alert">
+    <button class="shift-alert-close" onclick="hideShiftAlert()">&times;</button>
+    <div class="shift-alert-header">
+        <span id="shift-alert-icon">⚡</span>
+        <span class="shift-alert-title" id="shift-alert-title">Momentum Shift Detected</span>
+    </div>
+    <div class="shift-alert-body" id="shift-alert-body"></div>
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

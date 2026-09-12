@@ -1,0 +1,197 @@
+{
+  "phase": "3C",
+  "module": "Recommendation Engine",
+  "total_players_ranked": 720,
+  "scenarios_tested": 3,
+  "scenario_results": [
+    {
+      "scenario_name": "High-pressure death-over chase",
+      "match_situation": {
+        "batting_team": "Mumbai Indians",
+        "bowling_team": "Chennai Super Kings",
+        "venue": "Wankhede Stadium",
+        "current_score": 140,
+        "current_wickets": 5,
+        "current_over": 16,
+        "required_run_rate": 12.5,
+        "pressure_index": 72.0,
+        "momentum_score": -15.0,
+        "current_batter": "Rohit Sharma",
+        "current_bowler": "DJ Bravo",
+        "dismissed_batters": [
+          "SA Yadav",
+          "Ishan Kishan",
+          "T David"
+        ]
+      },
+      "recommendations": [
+        {
+          "Player": "AD Russell",
+          "Recommendation_Score": 86.62,
+          "Reason": "Explosive strike rate (174.1); High boundary percentage (78.6%); Very experienced (134 matches); Ideal for high-pressure run chase; Death-overs specialist",
+          "Expected_Impact": 4069.55,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "CH Gayle",
+          "Recommendation_Score": 84.02,
+          "Reason": "Strong career average (39.7); Explosive strike rate (149.3); High boundary percentage (75.8%); Very experienced (141 matches); Ideal for high-pressure run chase; Death-overs specialist",
+          "Expected_Impact": 7570.17,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "JC Buttler",
+          "Recommendation_Score": 82.06,
+          "Reason": "Strong career average (39.8); Explosive strike rate (149.7); High boundary percentage (66.8%); Very experienced (123 matches); Ideal for high-pressure run chase; Death-overs specialist",
+          "Expected_Impact": 6520.33,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "AB de Villiers",
+          "Recommendation_Score": 81.76,
+          "Reason": "Strong career average (39.9); Explosive strike rate (151.9); High boundary percentage (61.3%); Very experienced (170 matches); Ideal for high-pressure run chase; Death-overs specialist",
+          "Expected_Impact": 7847.45,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "N Pooran",
+          "Recommendation_Score": 81.11,
+          "Reason": "Strong career average (31.6); Explosive strike rate (165.1); High boundary percentage (70.9%); Very experienced (92 matches); Ideal for high-pressure run chase; Death-overs specialist",
+          "Expected_Impact": 3585.07,
+          "Confidence": 0.9
+        }
+      ]
+    },
+    {
+      "scenario_name": "Powerplay rebuilding after early wickets",
+      "match_situation": {
+        "batting_team": "Royal Challengers Bangalore",
+        "bowling_team": "Rajasthan Royals",
+        "venue": "M Chinnaswamy Stadium",
+        "current_score": 22,
+        "current_wickets": 3,
+        "current_over": 4,
+        "required_run_rate": 0.0,
+        "pressure_index": 45.0,
+        "momentum_score": -30.0,
+        "current_batter": "V Kohli",
+        "current_bowler": "YS Chahal",
+        "dismissed_batters": [
+          "Faf du Plessis",
+          "GJ Maxwell"
+        ]
+      },
+      "recommendations": [
+        {
+          "Player": "AD Russell",
+          "Recommendation_Score": 87.23,
+          "Reason": "Explosive strike rate (174.1); High boundary percentage (78.6%); Very experienced (134 matches)",
+          "Expected_Impact": 4069.55,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "CH Gayle",
+          "Recommendation_Score": 85.16,
+          "Reason": "Strong career average (39.7); Explosive strike rate (149.3); High boundary percentage (75.8%); Very experienced (141 matches)",
+          "Expected_Impact": 7570.17,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "JC Buttler",
+          "Recommendation_Score": 83.12,
+          "Reason": "Strong career average (39.8); Explosive strike rate (149.7); High boundary percentage (66.8%); Very experienced (123 matches)",
+          "Expected_Impact": 6520.33,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "AB de Villiers",
+          "Recommendation_Score": 82.67,
+          "Reason": "Strong career average (39.9); Explosive strike rate (151.9); High boundary percentage (61.3%); Very experienced (170 matches)",
+          "Expected_Impact": 7847.45,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "V Sehwag",
+          "Recommendation_Score": 81.95,
+          "Reason": "Explosive strike rate (155.4); High boundary percentage (72.3%); Very experienced (104 matches)",
+          "Expected_Impact": 4169.72,
+          "Confidence": 0.9
+        }
+      ]
+    },
+    {
+      "scenario_name": "Comfortable middle-overs consolidation",
+      "match_situation": {
+        "batting_team": "Kolkata Knight Riders",
+        "bowling_team": "Punjab Kings",
+        "venue": "Eden Gardens",
+        "current_score": 85,
+        "current_wickets": 1,
+        "current_over": 10,
+        "required_run_rate": 7.0,
+        "pressure_index": 15.0,
+        "momentum_score": 25.0,
+        "current_batter": "N Rana",
+        "current_bowler": "Arshdeep Singh",
+        "dismissed_batters": []
+      },
+      "recommendations": [
+        {
+          "Player": "AD Russell",
+          "Recommendation_Score": 81.96,
+          "Reason": "Explosive strike rate (174.1); High boundary percentage (78.6%); Very experienced (134 matches)",
+          "Expected_Impact": 4069.55,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "CH Gayle",
+          "Recommendation_Score": 80.55,
+          "Reason": "Strong career average (39.7); Explosive strike rate (149.3); High boundary percentage (75.8%); Very experienced (141 matches)",
+          "Expected_Impact": 7570.17,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "JC Buttler",
+          "Recommendation_Score": 78.62,
+          "Reason": "Strong career average (39.8); Explosive strike rate (149.7); High boundary percentage (66.8%); Very experienced (123 matches)",
+          "Expected_Impact": 6520.33,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "AB de Villiers",
+          "Recommendation_Score": 78.3,
+          "Reason": "Strong career average (39.9); Explosive strike rate (151.9); High boundary percentage (61.3%); Very experienced (170 matches)",
+          "Expected_Impact": 7847.45,
+          "Confidence": 0.9
+        },
+        {
+          "Player": "V Sehwag",
+          "Recommendation_Score": 77.23,
+          "Reason": "Explosive strike rate (155.4); High boundary percentage (72.3%); Very experienced (104 matches)",
+          "Expected_Impact": 4169.72,
+          "Confidence": 0.9
+        }
+      ]
+    }
+  ],
+  "scoring_weights": {
+    "career_average": 0.15,
+    "strike_rate": 0.2,
+    "boundary_pct": 0.1,
+    "batting_impact": 0.2,
+    "pressure_performance": 0.15,
+    "experience": 0.1,
+    "match_context": 0.1
+  },
+  "rules_enforced": [
+    "Never recommend players from the bowling team",
+    "Only recommend available (non-dismissed) batters",
+    "Players with < 5 matches get lower confidence",
+    "Recommendations ranked by composite score"
+  ],
+  "outputs_generated": [
+    "player_rankings.csv",
+    "recommendation_report.json"
+  ],
+  "status": "SUCCESS"
+}

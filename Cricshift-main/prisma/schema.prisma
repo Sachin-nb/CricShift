@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ── Users ─────────────────────────────────────────────────────────
+// Stores all registered users. Passwords are bcrypt-hashed server-side.
+// Mobile is optional; required only for OTP-based password reset.
+model User {
+  id             String    @id @default(cuid())
+  name           String
+  email          String    @unique
+  passwordHash   String
+  mobile         String?   @unique
+  // Access role: "user" (default) or "admin". Admins are also derived from
+  // the ADMIN_EMAILS env list on the backend, so this column is a convenience.
+  role           String    @default("user")
+  // OTP reset fields — cleared after use
+  otpCode        String?
+  otpExpiry      DateTime?
+  otpMobile      String?
+  // Face Lock: JSON array of 128-float face descriptors registered by an admin.
+  // Stores only the numeric embedding, never an image. Null = no face set up.
+  faceDescriptors String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  sessions       Session[]
+
+  @@map("users")
+}
+
+// ── Sessions ──────────────────────────────────────────────────────
+// Simple token-based sessions stored in the DB.
+// Each login creates a row; logout deletes it.
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("sessions")
+}

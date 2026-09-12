@@ -1,0 +1,58 @@
+{
+  "phase": "3C",
+  "module": "Explainability",
+  "explanation_method": {
+    "momentum_model": "tree",
+    "win_prediction_model": "shap_kernel"
+  },
+  "model_performance": {
+    "momentum": {
+      "Accuracy": 0.5188,
+      "Precision": 0.5324,
+      "Recall": 0.577,
+      "F1_Score": 0.5197,
+      "Weighted_F1": 0.4979,
+      "ROC_AUC": 0.7476,
+      "Per_Class_Recall": {
+        "0": 0.8237,
+        "1": 0.3138,
+        "2": 0.5935
+      }
+    },
+    "win_prediction": {
+      "Accuracy": 0.6269,
+      "Precision": 0.5881,
+      "Recall": 0.7401,
+      "F1_Score": 0.6555,
+      "ROC_AUC": 0.6794,
+      "PR_AUC": 0.6347,
+      "Log_Loss": 0.6927,
+      "Brier_Score": 0.2441,
+      "Calibration_Applied": true
+    }
+  },
+  "top_10_features_combined": [
+    "Runs_Last_6_Balls",
+    "Current_Run_Rate",
+    "Current_Wickets",
+    "Current_Over",
+    "Team_Win_Percentage",
+    "Bowling_Team",
+    "Innings",
+    "Venue",
+    "Current_Partnership_Runs",
+    "Batting_Impact_Score"
+  ],
+  "global_feature_count": {
+    "momentum": 38,
+    "win_prediction": 36
+  },
+  "sample_explanations_count": 5,
+  "outputs_generated": [
+    "global_feature_importance.csv",
+    "shap_summary.png",
+    "sample_local_explanations.json",
+    "explainability_report.json"
+  ],
+  "status": "SUCCESS"
+}
