@@ -136,36 +136,6 @@ export async function apiMe(): Promise<{ user: AuthUser }> {
   return _get("/api/auth/me");
 }
 
-// ── Face Lock (admin) ──────────────────────────────────────────────────────
-
-/** Whether the current admin has a face registered. */
-export async function apiFaceStatus(): Promise<{ enrolled: boolean; count: number }> {
-  return _get("/api/auth/face/status");
-}
-
-/** Register a face (requires the admin's password re-entry). */
-export async function apiFaceEnroll(
-  password: string,
-  descriptor: number[],
-): Promise<{ ok: boolean; count: number; message: string }> {
-  return _post("/api/auth/face/enroll", { password, descriptor }, true);
-}
-
-/** Remove all registered faces (password-gated). */
-export async function apiFaceReset(
-  password: string,
-): Promise<{ ok: boolean; message: string }> {
-  // descriptor is required by the shared request model but ignored server-side
-  return _post("/api/auth/face/reset", { password, descriptor: [] }, true);
-}
-
-/** Verify a captured face against the admin's registered faces. */
-export async function apiFaceVerify(
-  descriptor: number[],
-): Promise<{ ok: boolean; matched: boolean }> {
-  return _post("/api/auth/face/verify", { descriptor }, true);
-}
-
 export async function apiSendOtp(
   email: string,
 ): Promise<{ ok: boolean; message: string; registered?: boolean }> {
@@ -201,8 +171,6 @@ export function clearSession() {
   localStorage.removeItem(USER_KEY);
   sessionStorage.removeItem(SESSION_KEY);
   sessionStorage.removeItem(USER_KEY);
-  // Clear the admin Face Lock unlock flag so the next admin must re-verify.
-  sessionStorage.removeItem("cs_admin_face_unlocked");
 }
 
 export function getStoredToken(): string | null {
