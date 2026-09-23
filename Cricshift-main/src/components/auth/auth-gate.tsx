@@ -7,26 +7,6 @@ import { Loader2, ShieldX } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { consumeSplashPending } from "@/lib/api/auth";
 import { SplashScreen } from "@/components/auth/splash-screen";
-import dynamic from "next/dynamic";
-
-// FaceLock loads @vladmandic/face-api (TensorFlow.js) which is browser-only and
-// heavy. Load it lazily on the client only, so it never runs during SSR and
-// isn't bundled into pages that don't need it.
-const FaceLock = dynamic(
-  () => import("@/components/auth/face-lock").then((m) => m.FaceLock),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex min-h-screen items-center justify-center bg-[#0b0b0b]">
-        <Loader2 className="h-8 w-8 animate-spin text-[#c8f000]" />
-      </div>
-    ),
-  },
-);
-
-// Per-session flag: once the admin passes Face Lock we don't re-prompt on
-// every /admin navigation within the same browser session.
-const FACE_UNLOCK_KEY = "cs_admin_face_unlocked";
 
 /**
  * AuthGate — global route protection.
@@ -35,6 +15,8 @@ const FACE_UNLOCK_KEY = "cs_admin_face_unlocked";
  *   • Public routes (login / signup / reset-password) are always accessible.
  *   • Every other route requires an authenticated user. If none, the user is
  *     redirected to /login.
+ *   • Admin routes (/admin*) additionally require the user's role to be "admin";
+ *     non-admins are bounced to the home page.
  *   • While the session is being restored/validated we show a full-screen
  *     loader so protected content never flashes before the redirect.
  *
@@ -68,14 +50,6 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
 
   const adminRoute = isAdminRoute(pathname);
   const isAdmin = user?.role === "admin";
-
-  // Face Lock: whether the admin has already passed face verification this session.
-  const [faceUnlocked, setFaceUnlocked] = useState(false);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setFaceUnlocked(sessionStorage.getItem(FACE_UNLOCK_KEY) === "1");
-    }
-  }, []);
 
   useEffect(() => {
     if (loading) return; // wait until session restore finishes
@@ -139,20 +113,8 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Admin route + admin user, but Face Lock not yet passed this session →
-  // show the biometric gate (verify if a face is registered, else enroll).
-  if (adminRoute && isAdmin && !faceUnlocked) {
-    return (
-      <FaceLock
-        onUnlock={() => {
-          sessionStorage.setItem(FACE_UNLOCK_KEY, "1");
-          setFaceUnlocked(true);
-        }}
-      />
-    );
-  }
-
-  // Authenticated. Render the app, and overlay the splash while it plays.
+  // Authenticated (and, for /admin, an admin). Render the app and overlay the
+  // splash while it plays.
   return (
     <>
       {children}
