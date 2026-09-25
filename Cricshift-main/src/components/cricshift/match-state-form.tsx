@@ -26,18 +26,26 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Loader2, ChevronDown, ChevronUp, Zap } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface MatchStateFormProps {
   onSubmit: (data: MatchStateFormData) => void;
   isLoading?: boolean;
   submitLabel?: string;
+  /**
+   * When true, the Batter/Bowler selects are hidden and excluded from the
+   * "all fields filled" check. Used by the What-If Simulator, which chooses
+   * the current batter/bowler from a locked squad instead of this form.
+   * The parent overwrites batter_name/bowler_name on the submitted data.
+   */
+  hidePlayers?: boolean;
 }
 
 export function MatchStateForm({
   onSubmit,
   isLoading,
   submitLabel = "Predict Match Intelligence",
+  hidePlayers = false,
 }: MatchStateFormProps) {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const { data: teamsData } = useTeams();
@@ -65,6 +73,16 @@ export function MatchStateForm({
 
   const innings = form.watch("innings");
 
+  // When the batter/bowler selects are hidden (What-If Simulator), the schema
+  // still requires those fields. Seed them with a valid placeholder so form
+  // validation passes; the parent overwrites them from the locked squad.
+  useEffect(() => {
+    if (hidePlayers) {
+      form.setValue("batter_name", "Unknown", { shouldValidate: true });
+      form.setValue("bowler_name", "Unknown", { shouldValidate: true });
+    }
+  }, [hidePlayers, form]);
+
   // Watch required fields so we can disable the submit button until every
   // option is selected / filled. Results are only produced on a valid submit.
   const watched = form.watch();
@@ -74,8 +92,8 @@ export function MatchStateForm({
     isFilled(watched.batting_team) &&
     isFilled(watched.bowling_team) &&
     isFilled(watched.venue) &&
-    isFilled(watched.batter_name) &&
-    isFilled(watched.bowler_name) &&
+    (hidePlayers || isFilled(watched.batter_name)) &&
+    (hidePlayers || isFilled(watched.bowler_name)) &&
     isFilled(watched.season) &&
     isFilled(watched.current_over) &&
     isFilled(watched.current_ball) &&
@@ -345,7 +363,9 @@ export function MatchStateForm({
           />
         </div>
 
-        {/* Players */}
+        {/* Players — hidden when the parent (What-If Simulator) drives the
+            current batter/bowler from a locked squad instead. */}
+        {!hidePlayers && (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <FormField
             control={form.control}
@@ -398,6 +418,7 @@ export function MatchStateForm({
             )}
           />
         </div>
+        )}
 
         {/* Advanced rolling stats toggle */}
         <button
