@@ -12,12 +12,12 @@ import { SplashScreen } from "@/components/auth/splash-screen";
  * AuthGate — global route protection.
  *
  * Wraps the whole app. Behaviour:
- *   â€¢ Public routes (login / signup / reset-password) are always accessible.
- *   â€¢ Every other route requires an authenticated user. If none, the user is
+ *   • Public routes (login / signup / reset-password) are always accessible.
+ *   • Every other route requires an authenticated user. If none, the user is
  *     redirected to /login.
- *   â€¢ Admin routes (/admin*) additionally require the user's role to be "admin";
+ *   • Admin routes (/admin*) additionally require the user's role to be "admin";
  *     non-admins are bounced to the home page.
- *   â€¢ While the session is being restored/validated we show a full-screen
+ *   • While the session is being restored/validated we show a full-screen
  *     loader so protected content never flashes before the redirect.
  *
  * "Keep me logged in" is handled in the auth layer: a remembered session lives

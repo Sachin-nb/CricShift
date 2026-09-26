@@ -32,9 +32,10 @@ app = Flask(__name__)
 # Max upload size read from env var (default 100 MB).
 # Override with MAX_UPLOAD_MB=50 in .env for smaller cap.
 app.config["MAX_CONTENT_LENGTH"] = int(os.environ.get("MAX_UPLOAD_MB", "100")) * 1024 * 1024
-UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "data", "uploads")
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+import os
 
+UPLOAD_DIR = "/tmp/uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.errorhandler(413)
 def too_large(e):
