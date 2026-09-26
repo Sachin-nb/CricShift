@@ -85,7 +85,7 @@ export function SplashScreen({ onDone }: SplashScreenProps) {
             key={i}
             className={
               "text-4xl font-black tracking-tight sm:text-5xl " +
-              (i < 4 ? "text-white" : "text-[#c8f000]")
+              (i < 4 ? "text-white" : "text-[#00c853]")
             }
             initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -109,7 +109,7 @@ export function SplashScreen({ onDone }: SplashScreenProps) {
       {/* Progress bar that runs then triggers onDone */}
       <motion.div className="mt-8 h-0.5 w-40 overflow-hidden rounded-full bg-white/10">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#c8f000]"
+          className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#00c853]"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ duration: 1.6, delay: 0.5, ease: "easeInOut" }}

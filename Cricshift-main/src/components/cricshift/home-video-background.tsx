@@ -86,7 +86,7 @@ export function HomeVideoBackground() {
       {/* Brand-tinted dark overlay for legibility over bright video frames. */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/85" />
       {/* Subtle emerald/lime brand wash to match the rest of the app. */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(200,240,0,0.10),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(0,200,83,0.10),transparent_60%)]" />
     </div>
   );
 }

@@ -3,8 +3,9 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Navbar } from "@/components/cricshift/navbar";
+import { PageShell } from "@/components/cricshift/page-shell";
 import { useUploadHistoricalDataset } from "@/lib/api/historical";
+import { toast } from "@/hooks/use-toast";
 import { FileUp, File, Loader2, ArrowRight, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +35,11 @@ export default function HistoricalUploadPage() {
       if (droppedFile.name.endsWith(".csv") || droppedFile.type === "text/csv" || droppedFile.type === "application/vnd.ms-excel") {
         setFile(droppedFile);
       } else {
-        alert("Please upload a valid .csv file.");
+        toast({
+          variant: "destructive",
+          title: "Invalid file type",
+          description: "Please upload a valid .csv file with ball-by-ball match data.",
+        });
       }
     }
   };
@@ -70,28 +75,16 @@ export default function HistoricalUploadPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col">
-      <Navbar />
-      
-      <main className="flex flex-1 flex-col items-center justify-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full pt-20">
-        
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-1.5 text-sm font-medium text-amber-400 mb-6">
-            <FileUp className="h-4 w-4" />
-            Historical Match Analysis
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-4">
-            Upload Match Data
-          </h1>
-          <p className="max-w-xl text-lg text-muted-foreground mx-auto">
-            Upload a ball-by-ball CSV dataset to generate a complete intelligence timeline, detecting momentum shifts and visualizing win probabilities.
-          </p>
-        </motion.div>
-
+    <PageShell
+      eyebrow="Historical Match Analysis"
+      eyebrowIcon={FileUp}
+      title="Upload"
+      titleAccent="Match Data"
+      subtitle="Upload a ball-by-ball CSV dataset to generate a complete intelligence timeline, detecting momentum shifts and visualizing win probabilities."
+      centered
+      maxWidth="4xl"
+    >
+      <div className="flex flex-1 flex-col items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -111,6 +104,15 @@ export default function HistoricalUploadPage() {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             onClick={() => !file && fileInputRef.current?.click()}
+            onKeyDown={(e) => {
+              if (!file && (e.key === "Enter" || e.key === " ")) {
+                e.preventDefault();
+                fileInputRef.current?.click();
+              }
+            }}
+            role={file ? undefined : "button"}
+            tabIndex={file ? undefined : 0}
+            aria-label={file ? undefined : "Upload a CSV dataset. Click or drag a file here."}
             style={{ cursor: file ? "default" : "pointer" }}
           >
             <input
@@ -186,7 +188,7 @@ export default function HistoricalUploadPage() {
           )}
 
         </motion.div>
-      </main>
-    </div>
+      </div>
+    </PageShell>
   );
 }

@@ -4,9 +4,20 @@ import { use } from "react";
 import { Navbar } from "@/components/cricshift/navbar";
 import { useLiveMatch, useLiveMatchIntelligence, useLiveWebSocket } from "@/lib/api/live";
 import { Loader2, Activity, Gauge, Target, Crown, TrendingUp, BarChart2, Radio, Sparkles, Zap, ShieldAlert } from "lucide-react";
+import { LoadingState, ErrorState } from "@/components/cricshift/states";
 import { MatchCard } from "@/components/cricshift/match-card";
-import { RecommendPlayer } from "@/components/cricshift/recommend-player";
-import { WhatIfSimulator } from "@/components/cricshift/what-if-simulator";
+import dynamic from "next/dynamic";
+
+// Lazy-load the heavier interactive tools — they render lower on the page and
+// aren't needed for first paint, so keep them out of the initial route bundle.
+const RecommendPlayer = dynamic(
+  () => import("@/components/cricshift/recommend-player").then((m) => m.RecommendPlayer),
+  { ssr: false, loading: () => <LoadingState variant="inline" label="Loading recommendations…" /> },
+);
+const WhatIfSimulator = dynamic(
+  () => import("@/components/cricshift/what-if-simulator").then((m) => m.WhatIfSimulator),
+  { ssr: false, loading: () => <LoadingState variant="inline" label="Loading simulator…" /> },
+);
 import {
   Area, AreaChart, Bar, BarChart, Cell,
   CartesianGrid, Line, LineChart,
@@ -61,11 +72,8 @@ export default function LiveMatchIntelligencePage({
     return (
       <div className="relative flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex flex-1 items-center justify-center pt-24">
-          <div className="flex flex-col items-center gap-4 text-muted-foreground">
-            <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
-            <p>Fetching match data…</p>
-          </div>
+        <main className="flex flex-1 items-center justify-center pt-28">
+          <LoadingState variant="inline" label="Fetching match data…" />
         </main>
       </div>
     );
@@ -75,8 +83,13 @@ export default function LiveMatchIntelligencePage({
     return (
       <div className="relative flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex flex-1 items-center justify-center pt-24">
-          <div className="text-center text-muted-foreground"><p>Match not found.</p></div>
+        <main className="flex flex-1 items-center justify-center pt-28 px-4">
+          <ErrorState
+            title="Match not found"
+            message="This match may have ended or is no longer available."
+            onRetry={() => { window.location.href = "/live"; }}
+            retryLabel="Back to Live Matches"
+          />
         </main>
       </div>
     );
@@ -391,7 +404,11 @@ export default function LiveMatchIntelligencePage({
               <span className="flex items-center gap-1"><span className="h-px w-4 bg-red-500/50 inline-block" />Wicket</span>
             </div>
 
-            <div className="h-64 w-full p-4 pl-1">
+            <div
+              className="h-64 w-full p-4 pl-1"
+              role="img"
+              aria-label="Momentum shift chart: positive-momentum probability over the course of the innings."
+            >
               {intelLoading ? (
                 <ChartSkeleton />
               ) : momentumData.length > 0 ? (
@@ -471,7 +488,11 @@ export default function LiveMatchIntelligencePage({
               </div>
             </div>
 
-            <div className="h-64 w-full p-4 pl-1">
+            <div
+              className="h-64 w-full p-4 pl-1"
+              role="img"
+              aria-label={`Win probability chart over the innings, comparing ${teamA} and ${teamB}.`}
+            >
               {intelLoading ? (
                 <ChartSkeleton />
               ) : winProbData.length > 0 ? (

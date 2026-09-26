@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -126,7 +126,7 @@ export default function VerifyOtpPage() {
             type="button"
             onClick={handleResend}
             disabled={resendIn > 0}
-            className="text-xs font-bold text-[#c8f000] hover:underline disabled:cursor-not-allowed disabled:text-white/30 disabled:no-underline"
+            className="text-xs font-bold text-[#00c853] hover:underline disabled:cursor-not-allowed disabled:text-white/30 disabled:no-underline"
           >
             {resendIn > 0 ? `Resend OTP (${resendIn}s)` : "Resend OTP"}
           </button>
@@ -146,8 +146,8 @@ export default function VerifyOtpPage() {
               className={
                 "h-14 w-full rounded-xl border bg-black/40 text-center text-xl font-bold text-white outline-none transition-all " +
                 (d
-                  ? "border-[#c8f000] ring-2 ring-[#c8f000]/30"
-                  : "border-white/10 focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30")
+                  ? "border-[#00c853] ring-2 ring-[#00c853]/30"
+                  : "border-white/10 focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30")
               }
             />
           ))}

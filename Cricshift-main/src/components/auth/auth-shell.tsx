@@ -9,7 +9,7 @@ import Link from "next/link";
  * Left  : hero image with headline + supporting copy (hidden on small screens)
  * Right : the form card (children)
  *
- * The lime accent (#c8f000) matches the CricShift auth design mockups.
+ * The lime accent (#00c853) matches the CricShift auth design mockups.
  */
 
 interface AuthShellProps {
@@ -37,16 +37,17 @@ function Wordmark({ compact = false }: { compact?: boolean }) {
   return (
     <div className="flex items-center gap-2.5">
       <span
+        aria-hidden="true"
         className={`relative grid place-items-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_20px_rgba(0,200,83,0.5)] ${
           compact ? "h-7 w-7 text-sm" : "h-9 w-9 text-lg"
         }`}
       >
-        <span className="drop-shadow">🏏</span>
+        <span className="drop-shadow">ðŸ</span>
       </span>
       <span
         className={`font-black tracking-tight ${compact ? "text-base" : "text-lg"}`}
       >
-        Cric<span className="text-[#c8f000]">Shift</span>
+        Cric<span className="text-[#00c853]">Shift</span>
       </span>
     </div>
   );
@@ -67,7 +68,7 @@ export function AuthShell({
       <div aria-hidden className="pointer-events-none absolute inset-0">
         {/* Emerald / lime radial glows for depth */}
         <div className="absolute -left-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(0,200,83,0.18),transparent_65%)] blur-2xl" />
-        <div className="absolute -bottom-52 right-[-8rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(200,240,0,0.12),transparent_65%)] blur-2xl" />
+        <div className="absolute -bottom-52 right-[-8rem] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(0,200,83,0.12),transparent_65%)] blur-2xl" />
         {/* Faint pitch grid texture */}
         <div
           className="absolute inset-0 opacity-[0.05]"
@@ -99,15 +100,15 @@ export function AuthShell({
         {/* Headline block bottom-left */}
         <div className="relative z-10 max-w-lg p-10">
           {eyebrow && (
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#c8f000]/30 bg-[#c8f000]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#c8f000] backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#c8f000]" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00c853]/30 bg-[#00c853]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#00c853] backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00c853]" />
               {eyebrow}
             </div>
           )}
           <h1 className="text-5xl font-black uppercase leading-[0.95] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
             {headlineTop}
             <br />
-            <span className="bg-gradient-to-r from-[#c8f000] to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#00c853] to-emerald-400 bg-clip-text text-transparent">
               {headlineBottom}
             </span>
           </h1>
@@ -123,7 +124,7 @@ export function AuthShell({
         className="pointer-events-none absolute inset-y-0 left-1/2 z-20 hidden w-px -translate-x-1/2 lg:block"
         style={{
           background:
-            "linear-gradient(to bottom, transparent, #c8f000 40%, #c8f000 60%, transparent)",
+            "linear-gradient(to bottom, transparent, #00c853 40%, #00c853 60%, transparent)",
           transform: "translateX(-50%) rotate(8deg) scaleY(1.4)",
           opacity: 0.6,
         }}
@@ -138,7 +139,7 @@ export function AuthShell({
 
         {/* Glowing gradient border wrapper for a premium, elevated card */}
         <div className="relative w-full max-w-md">
-          <div className="absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-[#c8f000]/40 via-white/5 to-transparent opacity-70 blur-[1px]" />
+          <div className="absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-[#00c853]/40 via-white/5 to-transparent opacity-70 blur-[1px]" />
           <div className="relative rounded-3xl border border-white/10 bg-[#101010]/80 p-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl">
             {children}
           </div>
@@ -160,7 +161,7 @@ export function AuthInput({
       </label>
       <input
         {...props}
-        className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+        className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
       />
     </div>
   );
@@ -176,7 +177,7 @@ export function AuthButton({
     <button
       {...props}
       disabled={loading || props.disabled}
-      className="w-full rounded-lg bg-[#c8f000] py-3.5 text-sm font-black uppercase tracking-widest text-black transition-all hover:brightness-95 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+      className="w-full rounded-lg bg-[#00c853] py-3.5 text-sm font-black uppercase tracking-widest text-black transition-all hover:brightness-95 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
     >
       {loading ? "Please wait…" : children}
     </button>
@@ -191,7 +192,7 @@ export function AuthMessage({ type, text }: { type: "error" | "success"; text: s
       className={
         type === "error"
           ? "mb-4 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2.5 text-xs text-red-300"
-          : "mb-4 rounded-lg border border-[#c8f000]/30 bg-[#c8f000]/10 px-3 py-2.5 text-xs text-[#c8f000]"
+          : "mb-4 rounded-lg border border-[#00c853]/30 bg-[#00c853]/10 px-3 py-2.5 text-xs text-[#00c853]"
       }
     >
       {text}
@@ -202,8 +203,8 @@ export function AuthMessage({ type, text }: { type: "error" | "success"; text: s
 export function BackToLogin() {
   return (
     <p className="mt-6 text-center text-xs text-white/50">
-      ← Back to{" "}
-      <Link href="/login" className="font-bold text-[#c8f000] hover:underline">
+      ← Back to{" "}
+      <Link href="/login" className="font-bold text-[#00c853] hover:underline">
         Login
       </Link>
     </p>

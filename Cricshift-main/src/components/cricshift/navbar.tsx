@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/context/auth-context";
+import { useHealth } from "@/lib/api/hooks";
 
 const NAV_LINKS = [
   { label: "Home",       href: "/"          },
@@ -31,23 +32,14 @@ export function Navbar() {
     router.push("/login");
   };
   
-  // Custom polling health check (or use react query if available in context)
-  const [apiStatus, setApiStatus] = useState<"connecting" | "connected" | "error">("connecting");
-  
-  useEffect(() => {
-    const checkHealth = async () => {
-      try {
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/health");
-        if (res.ok) setApiStatus("connected");
-        else setApiStatus("error");
-      } catch (e) {
-        setApiStatus("error");
-      }
-    };
-    checkHealth();
-    const interval = setInterval(checkHealth, 30000);
-    return () => clearInterval(interval);
-  }, []);
+  // Reuse the shared React Query health source (one poll for the whole app)
+  // instead of the navbar running its own duplicate fetch + interval.
+  const { data: health, isError: healthError, isLoading: healthLoading } = useHealth();
+  const apiStatus: "connecting" | "connected" | "error" = healthLoading
+    ? "connecting"
+    : healthError || !health
+      ? "error"
+      : "connected";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -72,9 +64,9 @@ export function Navbar() {
         )}
       >
         {/* Logo */}
-        <Link href="/" className="group flex items-center gap-2.5">
-          <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-lg shadow-[0_0_20px_rgba(0,200,83,0.5)]">
-            <span className="drop-shadow">🏏</span>
+        <Link href="/" aria-label="CricShift — home" className="group flex items-center gap-2.5">
+          <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-lg shadow-[0_0_20px_rgba(0,200,83,0.5)]" aria-hidden="true">
+            <span className="drop-shadow">ðŸ</span>
           </span>
           <span className="text-lg font-bold tracking-tight text-white">
             Cric<span className="text-gradient-emerald">Shift</span>
@@ -146,7 +138,7 @@ export function Navbar() {
             {user ? (
               <>
                 <span className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white">
-                  <UserIcon className="h-3.5 w-3.5 text-[#c8f000]" />
+                  <UserIcon className="h-3.5 w-3.5 text-[#00c853]" />
                   {user.name?.split(" ")[0] || "Player"}
                 </span>
                 <button
@@ -167,7 +159,7 @@ export function Navbar() {
                 </Link>
                 <Link
                   href="/signup"
-                  className="pressable rounded-lg bg-[#c8f000] px-4 py-1.5 text-sm font-bold text-black shadow-[0_0_20px_-4px_rgba(200,240,0,0.5)] transition-all hover:brightness-95 hover:shadow-[0_0_28px_-4px_rgba(200,240,0,0.7)]"
+                  className="pressable rounded-lg bg-[#00c853] px-4 py-1.5 text-sm font-bold text-black shadow-[0_0_20px_-4px_rgba(0,200,83,0.5)] transition-all hover:brightness-95 hover:shadow-[0_0_28px_-4px_rgba(0,200,83,0.7)]"
                 >
                   Sign Up
                 </Link>
@@ -244,7 +236,7 @@ export function Navbar() {
                 {user ? (
                   <>
                     <span className="flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 text-sm font-medium text-white">
-                      <UserIcon className="h-4 w-4 text-[#c8f000]" />
+                      <UserIcon className="h-4 w-4 text-[#00c853]" />
                       {user.name || "Player"}
                     </span>
                     <button
@@ -267,7 +259,7 @@ export function Navbar() {
                     <Link
                       href="/signup"
                       onClick={() => setOpen(false)}
-                      className="rounded-lg bg-[#c8f000] px-4 py-3 text-center text-sm font-bold text-black transition-all hover:brightness-95"
+                      className="rounded-lg bg-[#00c853] px-4 py-3 text-center text-sm font-bold text-black transition-all hover:brightness-95"
                     >
                       Sign Up
                     </Link>

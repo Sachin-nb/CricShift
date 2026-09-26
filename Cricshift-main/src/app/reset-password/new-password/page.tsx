@@ -71,8 +71,8 @@ export default function NewPasswordPage() {
       <StepDots active={3} />
 
       {done ? (
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-[#c8f000]/30 bg-[#c8f000]/10 p-8 text-center">
-          <CheckCircle2 className="h-10 w-10 text-[#c8f000]" />
+        <div className="flex flex-col items-center gap-3 rounded-xl border border-[#00c853]/30 bg-[#00c853]/10 p-8 text-center">
+          <CheckCircle2 className="h-10 w-10 text-[#00c853]" />
           <p className="font-bold text-white">Password reset successful!</p>
           <p className="text-xs text-white/60">Redirecting you to login…</p>
         </div>
@@ -93,7 +93,7 @@ export default function NewPasswordPage() {
                   placeholder="SecurePassword123!"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
                 />
                 <button type="button" onClick={() => setShowPw((s) => !s)} tabIndex={-1}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70">
@@ -114,7 +114,7 @@ export default function NewPasswordPage() {
                   placeholder="Re-enter new password"
                   value={confirm}
                   onChange={(e) => setConfirm(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
                 />
                 <button type="button" onClick={() => setShowCf((s) => !s)} tabIndex={-1}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70">

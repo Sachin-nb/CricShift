@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -75,7 +75,7 @@ export default function ResetEmailPage() {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-lg border-l-2 border-l-[#c8f000] border-y border-r border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+            className="w-full rounded-lg border-l-2 border-l-[#00c853] border-y border-r border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
           />
         </div>
 
@@ -96,13 +96,13 @@ export function StepDots({ active }: { active: 1 | 2 | 3 }) {
           <span
             className={
               "grid h-6 w-6 place-items-center rounded-full text-[11px] font-bold " +
-              (n <= active ? "bg-[#c8f000] text-black" : "bg-white/10 text-white/40")
+              (n <= active ? "bg-[#00c853] text-black" : "bg-white/10 text-white/40")
             }
           >
             {n}
           </span>
           {n < 3 && (
-            <span className={"h-px w-6 " + (n < active ? "bg-[#c8f000]" : "bg-white/10")} />
+            <span className={"h-px w-6 " + (n < active ? "bg-[#00c853]" : "bg-white/10")} />
           )}
         </div>
       ))}

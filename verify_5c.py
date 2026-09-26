@@ -1,13 +1,17 @@
 import os
 import json
+from pathlib import Path
 from fastapi.testclient import TestClient
 from backend.main import app
 
 client = TestClient(app)
 
+# Project root = this script's own directory (portable across machines).
+PROJECT_ROOT = Path(__file__).resolve().parent
+
 def test_historical_upload():
     print("--- 1. HISTORICAL BACKEND VERIFICATION ---")
-    csv_path = r"C:\Users\sachi\OneDrive\Documents\Project Phase\cricket-analytics\data\uploads\uploaded_match.csv"
+    csv_path = str(PROJECT_ROOT / "data" / "uploads" / "uploaded_match.csv")
     
     if not os.path.exists(csv_path):
         print(f"FAIL: Dataset not found at {csv_path}")

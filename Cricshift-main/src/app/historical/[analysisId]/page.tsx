@@ -4,11 +4,22 @@ import { use, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/cricshift/navbar";
 import {
-  Loader2, Activity, Gauge, Target, Crown, GitBranch, Trophy,
+  Activity, Gauge, Target, Crown, GitBranch, Trophy,
   TrendingUp, BarChart2,
 } from "lucide-react";
-import { RecommendPlayer } from "@/components/cricshift/recommend-player";
-import { WhatIfSimulator } from "@/components/cricshift/what-if-simulator";
+import { LoadingState, ErrorState } from "@/components/cricshift/states";
+import dynamic from "next/dynamic";
+
+// Lazy-load the heavier interactive tools — they render lower on the page and
+// aren't needed for first paint, so keep them out of the initial route bundle.
+const RecommendPlayer = dynamic(
+  () => import("@/components/cricshift/recommend-player").then((m) => m.RecommendPlayer),
+  { ssr: false, loading: () => <LoadingState variant="inline" label="Loading recommendations…" /> },
+);
+const WhatIfSimulator = dynamic(
+  () => import("@/components/cricshift/what-if-simulator").then((m) => m.WhatIfSimulator),
+  { ssr: false, loading: () => <LoadingState variant="inline" label="Loading simulator…" /> },
+);
 import {
   Area,
   AreaChart,
@@ -48,12 +59,16 @@ export default function HistoricalAnalysisDashboard({
 
   const [data, setData] = useState<Record<string, any> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   // Which innings' analytics are shown
   const [innings, setInnings] = useState<1 | 2>(1);
   // Over selected within the current innings (index into that innings' slice)
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
 
-  useEffect(() => {
+  function loadAnalysis() {
+    setIsLoading(true);
+    setLoadError(null);
+
     // Try sessionStorage first (fast, works right after upload).
     // Fall back to fetching from the backend if storage is empty or expired.
     const stored = sessionStorage.getItem(`analysis_${analysisId}`);
@@ -69,12 +84,27 @@ export default function HistoricalAnalysisDashboard({
 
     const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
     fetch(`${API_BASE}/api/historical/analysis/${analysisId}`)
-      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => {
+        if (!r.ok) throw new Error(`Server returned ${r.status}`);
+        return r.json();
+      })
       .then((d) => {
         if (d) setData(d);
+        else setLoadError("This analysis could not be found. It may have expired.");
       })
-      .catch(() => {})
+      .catch((err) => {
+        setLoadError(
+          err instanceof Error
+            ? `Could not load the analysis: ${err.message}`
+            : "Could not load the analysis.",
+        );
+      })
       .finally(() => setIsLoading(false));
+  }
+
+  useEffect(() => {
+    loadAnalysis();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [analysisId]);
 
   // Reset the over selector whenever the innings changes.
@@ -178,30 +208,24 @@ export default function HistoricalAnalysisDashboard({
     return (
       <div className="relative flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex flex-1 items-center justify-center pt-24">
-          <div className="flex flex-col items-center gap-4 text-muted-foreground">
-            <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
-            <p>Loading historical analysis...</p>
-          </div>
+        <main className="flex flex-1 items-center justify-center pt-28">
+          <LoadingState variant="inline" label="Loading historical analysis…" />
         </main>
       </div>
     );
   }
 
-  if (!data) {
+  if (loadError || !data) {
     return (
       <div className="relative flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex flex-1 items-center justify-center pt-24">
-          <div className="text-center text-muted-foreground">
-            <p className="mb-4">Analysis data not found or expired.</p>
-            <button
-              onClick={() => router.push("/historical")}
-              className="text-amber-400 hover:underline"
-            >
-              Upload a new dataset
-            </button>
-          </div>
+        <main className="flex flex-1 items-center justify-center pt-28 px-4">
+          <ErrorState
+            title="Analysis unavailable"
+            message={loadError ?? "Analysis data not found or expired."}
+            onRetry={() => router.push("/historical")}
+            retryLabel="Upload a new dataset"
+          />
         </main>
       </div>
     );

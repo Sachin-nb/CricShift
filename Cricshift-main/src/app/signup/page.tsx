@@ -150,10 +150,10 @@ export default function SignupPage() {
       footerSlot={
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 text-sm text-white/80">
-            <ShieldCheck className="h-4 w-4 text-[#c8f000]" /> Verified Match Rankings
+            <ShieldCheck className="h-4 w-4 text-[#00c853]" /> Verified Match Rankings
           </div>
           <div className="flex items-center gap-2 text-sm text-white/80">
-            <Trophy className="h-4 w-4 text-[#c8f000]" /> Daily Fantasy Cash Prizes
+            <Trophy className="h-4 w-4 text-[#00c853]" /> Daily Fantasy Cash Prizes
           </div>
         </div>
       }
@@ -203,11 +203,12 @@ export default function SignupPage() {
                   placeholder="Create secure password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
                 />
                 <button type="button" onClick={() => setShowPw((s) => !s)} tabIndex={-1}
+                  aria-label={showPw ? "Hide password" : "Show password"}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70">
-                  {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showPw ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}
                 </button>
               </div>
             </div>
@@ -224,11 +225,12 @@ export default function SignupPage() {
                   placeholder="Re-enter password"
                   value={confirm}
                   onChange={(e) => setConfirm(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
                 />
                 <button type="button" onClick={() => setShowCf((s) => !s)} tabIndex={-1}
+                  aria-label={showCf ? "Hide password" : "Show password"}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70">
-                  {showCf ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showCf ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}
                 </button>
               </div>
             </div>
@@ -238,12 +240,12 @@ export default function SignupPage() {
                 type="checkbox"
                 checked={agree}
                 onChange={(e) => setAgree(e.target.checked)}
-                className="mt-0.5 h-4 w-4 accent-[#c8f000]"
+                className="mt-0.5 h-4 w-4 accent-[#00c853]"
               />
               <span>
                 I agree to the{" "}
-                <span className="font-bold text-[#c8f000]">Terms of Service</span> and{" "}
-                <span className="font-bold text-[#c8f000]">Privacy Policy</span>
+                <span className="font-bold text-[#00c853]">Terms of Service</span> and{" "}
+                <span className="font-bold text-[#00c853]">Privacy Policy</span>
               </span>
             </label>
 
@@ -267,7 +269,7 @@ export default function SignupPage() {
 
           <p className="mt-6 text-center text-xs text-white/50">
             Already have an account?{" "}
-            <Link href="/login" className="font-bold text-[#c8f000] hover:underline">
+            <Link href="/login" className="font-bold text-[#00c853] hover:underline">
               Log In
             </Link>
           </p>
@@ -275,7 +277,7 @@ export default function SignupPage() {
       ) : (
         <>
           <div className="mb-4 flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#c8f000]/15 text-[#c8f000]">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#00c853]/15 text-[#00c853]">
               <MailCheck className="h-5 w-5" />
             </div>
             <div>
@@ -299,7 +301,7 @@ export default function SignupPage() {
                 type="button"
                 onClick={handleResend}
                 disabled={resendIn > 0}
-                className="text-xs font-bold text-[#c8f000] hover:underline disabled:cursor-not-allowed disabled:text-white/30 disabled:no-underline"
+                className="text-xs font-bold text-[#00c853] hover:underline disabled:cursor-not-allowed disabled:text-white/30 disabled:no-underline"
               >
                 {resendIn > 0 ? `Resend (${resendIn}s)` : "Resend code"}
               </button>
@@ -319,8 +321,8 @@ export default function SignupPage() {
                   className={
                     "h-14 w-full rounded-xl border bg-black/40 text-center text-xl font-bold text-white outline-none transition-all " +
                     (d
-                      ? "border-[#c8f000] ring-2 ring-[#c8f000]/30"
-                      : "border-white/10 focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30")
+                      ? "border-[#00c853] ring-2 ring-[#00c853]/30"
+                      : "border-white/10 focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30")
                   }
                 />
               ))}
@@ -334,7 +336,7 @@ export default function SignupPage() {
             onClick={() => { setStep("form"); setError(""); setInfo(""); }}
             className="mt-5 w-full text-center text-xs text-white/50 hover:text-white/80"
           >
-            ← Back to edit details
+            ← Back to edit details
           </button>
         </>
       )}

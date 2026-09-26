@@ -1,8 +1,10 @@
 import os
 import sys
+from pathlib import Path
 
-# Add the project root to sys.path so we can import backend modules
-sys.path.append(r"C:\Users\sachi\OneDrive\Documents\Project Phase\cricket-analytics")
+# Add the project root (this script's own directory) to sys.path so we can
+# import backend modules regardless of where the project is checked out.
+sys.path.append(str(Path(__file__).resolve().parent))
 
 from backend.live.api_client import LiveAPIClient
 

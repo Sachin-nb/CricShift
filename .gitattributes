@@ -1,1 +1,32 @@
+# =========================================================================
+# Git LFS tracking for large binary / data files.
+#
+# NOTE: Files already committed as normal git blobs are NOT retroactively
+# moved to LFS by these rules — they only apply to files added/updated after
+# this point. To migrate existing history to LFS (rewrites commits), run:
+#     git lfs migrate import --include="*.mp4,*.pkl,data/processed/ball_by_ball.csv"
+# (Only do that on a branch you are willing to force-push, and coordinate with
+#  anyone else using the remote.)
+# =========================================================================
+
+# ── Large ML models ──
+*.pkl   filter=lfs diff=lfs merge=lfs -text
+*.joblib filter=lfs diff=lfs merge=lfs -text
+*.cbm   filter=lfs diff=lfs merge=lfs -text
+
+# ── Media assets ──
+*.mp4   filter=lfs diff=lfs merge=lfs -text
+*.mov   filter=lfs diff=lfs merge=lfs -text
+
+# ── Large processed/feature datasets (by path to avoid LFS-ing small CSVs) ──
 data/features/feature_dataset.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/ball_by_ball.csv   filter=lfs diff=lfs merge=lfs -text
+
+# ── Line-ending normalization (keeps diffs clean across OSes) ──
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary

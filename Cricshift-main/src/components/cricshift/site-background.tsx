@@ -32,7 +32,7 @@ export function SiteBackground() {
       {/* Dark brand-tinted overlay for legibility over the bright photo. */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85" />
       {/* Subtle lime brand wash to match the rest of the app. */}
-      <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(200,240,0,0.08),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(0,200,83,0.08),transparent_60%)]" />
     </div>
   );
 }

@@ -47,11 +47,11 @@ export default function LoginPage() {
       footerSlot={
         <div className="flex gap-10">
           <div>
-            <p className="text-2xl font-black text-[#c8f000]">10M+</p>
+            <p className="text-2xl font-black text-[#00c853]">10M+</p>
             <p className="text-[10px] uppercase tracking-widest text-white/50">Active Players</p>
           </div>
           <div>
-            <p className="text-2xl font-black text-[#c8f000]">0.03s</p>
+            <p className="text-2xl font-black text-[#00c853]">0.03s</p>
             <p className="text-[10px] uppercase tracking-widest text-white/50">Live Latency</p>
           </div>
         </div>
@@ -82,18 +82,19 @@ export default function LoginPage() {
               type={showPw ? "text" : "password"}
               required
               autoComplete="current-password"
-              placeholder="••••••••••••"
+              placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#c8f000] focus:bg-black/60 focus:ring-2 focus:ring-[#c8f000]/30"
+              className="w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-[#00c853] focus:bg-black/60 focus:ring-2 focus:ring-[#00c853]/30"
             />
             <button
               type="button"
               onClick={() => setShowPw((s) => !s)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70"
+              aria-label={showPw ? "Hide password" : "Show password"}
               tabIndex={-1}
             >
-              {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              {showPw ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -104,11 +105,11 @@ export default function LoginPage() {
               type="checkbox"
               checked={keep}
               onChange={(e) => setKeep(e.target.checked)}
-              className="h-4 w-4 accent-[#c8f000]"
+              className="h-4 w-4 accent-[#00c853]"
             />
             Keep me logged in
           </label>
-          <Link href="/reset-password" className="text-xs font-bold text-[#c8f000] hover:underline">
+          <Link href="/reset-password" className="text-xs font-bold text-[#00c853] hover:underline">
             Forgot password?
           </Link>
         </div>
@@ -133,7 +134,7 @@ export default function LoginPage() {
 
       <p className="mt-6 text-center text-xs text-white/50">
         Don&apos;t have an account?{" "}
-        <Link href="/signup" className="font-bold text-[#c8f000] hover:underline">
+        <Link href="/signup" className="font-bold text-[#00c853] hover:underline">
           Sign Up Now
         </Link>
       </p>

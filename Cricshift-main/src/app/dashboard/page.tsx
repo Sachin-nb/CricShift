@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { Navbar } from "@/components/cricshift/navbar";
+import { PageShell } from "@/components/cricshift/page-shell";
+import { Card } from "@/components/cricshift/card";
 import { MatchStateForm } from "@/components/cricshift/match-state-form";
 import { PredictionResults } from "@/components/cricshift/prediction-results";
 import { ApiStatus } from "@/components/cricshift/api-status";
@@ -85,57 +86,47 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="relative min-h-screen">
-      <Navbar />
-      <main className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">
-              Match{" "}
-              <span className="text-gradient-emerald">Intelligence</span>
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Enter match state for live AI-powered predictions
-            </p>
-          </div>
-          <ApiStatus />
-        </div>
-
-        {/* Two-column layout */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
-          {/* Left: Form */}
-          <div className="lg:col-span-2">
-            <div className="glass-card rounded-2xl p-5 sm:p-6">
-              <div className="flex items-center gap-2 mb-5">
-                <Activity className="h-4 w-4 text-emerald-400" />
-                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Match State
-                </span>
-              </div>
-              <MatchStateForm
-                onSubmit={handleSubmit}
-                isLoading={intelligence.isPending}
-              />
+    <PageShell
+      eyebrow="Match Intelligence"
+      eyebrowIcon={Activity}
+      title="Match"
+      titleAccent="Intelligence"
+      subtitle="Enter the match state for live AI-powered predictions."
+      actions={<ApiStatus />}
+    >
+      {/* Two-column layout */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+        {/* Left: Form */}
+        <div className="lg:col-span-2">
+          <Card>
+            <div className="flex items-center gap-2 mb-5">
+              <Activity className="h-4 w-4 text-emerald-400" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Match State
+              </span>
             </div>
-          </div>
-
-          {/* Right: Results */}
-          <div className="lg:col-span-3">
-            <PredictionResults
-              intelligence={intelligence.data}
+            <MatchStateForm
+              onSubmit={handleSubmit}
               isLoading={intelligence.isPending}
-              error={intelligence.error}
-              explainData={explain.data}
-              explainLoading={explain.isPending}
-              onExplain={handleExplain}
-              recommendData={recommend.data}
-              recommendLoading={recommend.isPending}
-              onRecommend={handleRecommend}
             />
-          </div>
+          </Card>
         </div>
-      </main>
-    </div>
+
+        {/* Right: Results */}
+        <div className="lg:col-span-3">
+          <PredictionResults
+            intelligence={intelligence.data}
+            isLoading={intelligence.isPending}
+            error={intelligence.error}
+            explainData={explain.data}
+            explainLoading={explain.isPending}
+            onExplain={handleExplain}
+            recommendData={recommend.data}
+            recommendLoading={recommend.isPending}
+            onRecommend={handleRecommend}
+          />
+        </div>
+      </div>
+    </PageShell>
   );
 }

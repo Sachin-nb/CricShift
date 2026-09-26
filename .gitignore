@@ -66,3 +66,35 @@ Thumbs.db
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# =========================================
+# Databases (runtime — recreated by the app)
+# =========================================
+
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+Cricshift-main/db/
+
+# =========================================
+# ML training scratch / generated outputs
+# =========================================
+
+catboost_info/
+server.log
+
+# =========================================
+# Local full-project duplicate (kept out of the repo)
+# =========================================
+
+githubtest/
+
+# =========================================
+# Misc runtime data that should not be versioned
+# (uncomment if you decide NOT to ship generated datasets)
+# =========================================
+
+# data/processed/
+# data/features/
