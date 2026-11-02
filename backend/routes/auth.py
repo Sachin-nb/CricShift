@@ -504,12 +504,22 @@ async def google_login(req: GoogleLoginRequest):
             google_requests.Request(),
             client_id,
             # small clock-skew tolerance
-            clock_skew_in_seconds=10,
+            clock_skew_in_seconds=60,
         )
     except ValueError as e:
-        # Bad signature, wrong audience, expired, etc.
+        err_str = str(e).lower()
         logger.warning(f"Google token verification failed: {e}")
-        raise HTTPException(status_code=401, detail="Google sign-in failed: invalid token.")
+        # Wrong audience = origin not registered in Google Cloud Console
+        if "audience" in err_str or "client_id" in err_str:
+            raise HTTPException(
+                status_code=401,
+                detail=(
+                    "Google sign-in failed: this app's origin is not authorised. "
+                    "Add http://localhost:3000 to Authorized JavaScript Origins "
+                    "in Google Cloud Console → Credentials."
+                ),
+            )
+        raise HTTPException(status_code=401, detail=f"Google sign-in failed: {e}")
     except Exception as e:
         logger.exception("Google verification error")
         raise HTTPException(status_code=502, detail=f"Could not verify Google token: {e}")

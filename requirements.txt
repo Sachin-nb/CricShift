@@ -20,6 +20,7 @@ bcrypt==4.2.1                     # password hashing
 google-auth==2.35.0               # Google Sign-In (OAuth) verification
 email-validator==2.2.0            # email field validation
 cuid2==2.0.1                      # collision-resistant IDs
+psycopg2-binary==2.9.10           # PostgreSQL driver for auth database
 
 # ── HTTP client (RapidAPI live-cricket feed) ────────────────────────────
 requests==2.32.3
